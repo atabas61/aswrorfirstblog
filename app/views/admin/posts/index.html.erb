@@ -1,0 +1,41 @@
+<h1>Yazılar</h1>
+<div style="padding:10px 0px;">
+    <%= link_to 'Yazı Oluştur', new_admin_post_path, class:"btn btn-primary colorwhite" %>
+</div>
+<div class="div"></div>
+<table class="table table-hover table-bordered table-striped">
+  <thead>
+    <tr>
+      <th width="40"></th>
+      <th width="3"><div style="color:black; font-size:30px; line-height:20px;">•</div></th>
+      <th>Başlık</th>
+      <th width="150">Kategori</th>
+      <th width="100">Yazar</th>
+      <th width="140">Eklenme</th>
+      <th width="10"></th>
+      <th width="10"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= image_tag post.image, width:"50", height:"40" %></td>
+        <td><%= post.durum %></td>
+        <td>
+            <%= post.title %><br/>
+            <small style="color: #757575"><b>Etiketler :</b> <%= post.keywords %></small>
+        </td>
+        <td><%= post.category.title %></td> 
+        <td><%= post.user.username %></td>
+        <td><%= post.created_at.strftime("%d %m %Y %H:%M") %></td>
+        <td><%= link_to 'Düzenle', edit_admin_post_path(post) %></td>
+        <td><%= link_to 'Sil', [:admin, post], method: :delete, data: { confirm: 'Bu yazıyı silmek istediğinize emin misiniz?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

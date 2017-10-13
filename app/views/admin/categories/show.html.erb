@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @category.title %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @category.desc %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @category.parent %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @category.status %>
+</p>
+
+<%= link_to 'Edit', edit_admin_category_path(@category) %> |
+<%= link_to 'Back', admin_categories_path %>

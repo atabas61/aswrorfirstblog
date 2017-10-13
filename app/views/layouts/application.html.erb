@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Firstblog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,500,600,700|Roboto+Condensed:400,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+  <body id="site">
+   <div class="container maincontent">
+   
+   <nav class="main-menu">
+    <ul class="nav nav-pills">
+    <% Admin::Menu.order('sort').where(status:false).each do |menu| %>
+        <li><%= link_to menu.title, menu.url, name:menu.desc, target:menu.target %></li>
+    <% end %>
+    </ul>        
+   </nav>
+   
+   
+   <div class="clearfix"></div>
+   
+    <div class="row">
+    <div class="col-md-9"><%= yield %>
+        <div class="clearfix"></div>
+    </%></div>
+    <div class="col-md-3">
+       
+        <div class="row p0 search_box">
+        <div class="col-xs-12 p0">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Aranacak birşey yazın..">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Ara!</button>
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="cleafix"></div>
+        </div><!-- /.row -->
+        
+        <% categories = Category.where(status:true).all %>
+        <% if categories.present? %>
+        <div class="panel panel-default">
+        <div class="panel-heading">KATEGORİLER</div>
+        <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked p0 m0">
+        <% categories.each do |category| %>
+            <li><%= link_to category.title, "/kategori/#{category.slug}" %></li>
+        <% end %>
+        </ul>
+        </div>
+        </div>
+        <% end %>
+        
+        <div class="socialicons">
+            <%= link_to 'F', 'http://facebook.com', class:'facebook' %>
+            <%= link_to 'T', 'http://twitter.com', class:'twitter' %>
+            <%= link_to 'Y', 'http://youtube.com', class:'youtube' %>
+            <%= link_to 'L', 'http://linkedin.com', class:'linkedin' %>
+            <%= link_to 'R', 'http://localhsot', class:'sitemap' %>
+        </div>
+        
+        
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">ÇOK OKUNANLAR</div>
+            <div class="panel-body"></div>
+        </div>
+        
+        
+        <div><%= image_tag 'https://i.hizliresim.com/QA8GdV.jpg', class:'img-responsive center-block' %></div>
+        
+        
+        
+        
+    </div>
+    </div>
+    
+    
+    <footer class="text-center">
+    <p>AtabasSoftware</p>
+    </footer>
+    
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/js/custom.js"></script> 
+    
+  </body>
+</html>

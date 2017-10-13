@@ -1,0 +1,60 @@
+<%= form_for([:admin, post], html:{class:"form-horizontal"}) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Başlık :", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.text_field :title, class:"form-control" %></div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Kategori :", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.collection_select :category_id, Category.all, :id, :title, {include_blank:"Bir kategori seçin"}, {class:"form-control"} %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Yazar :", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.collection_select :user_id, User.all, :id, :username, {}, {class:"form-control"} %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Etiketler :", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.text_field :keywords, class:"form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Açıklama", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.text_area :desc, class:"form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Görsel", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.file_field :image, class:"form-control" %>
+        <%= image_tag post.image, width:"200", height:"150" if post.image.url %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Durum", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.check_box :status %> Bu yazıyı yayımla</div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Yazı", class:"control-label col-sm-2" %>
+    <div class="col-sm-10"><%= f.text_area :content, class:"form-control ckeditor" %></div>
+  </div>
+
+  <div class="form-group">
+   <div class="control-label col-sm-2"></div>
+    <div class="col-sm-2"><%= f.submit "Kaydet", class:"btn btn-primary" %></div>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_for(admin_menu, html:{class:'form-horizontal'}) do |f| %>
+  <% if admin_menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_menu.errors.count, "error") %> prohibited this admin_menu from being saved:</h2>
+
+      <ul>
+      <% admin_menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Başlık", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><%= f.text_field :title, class:'form-control' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Açıklama", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><%= f.text_field :desc, class:'form-control' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Bağlantı Linki", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><%= f.text_field :url, class:'form-control', placeholder:'http://siteadi.com/icerik' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Sıra", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><%= f.number_field :sort, class:'form-control' %></div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Hedef Pencere", class:'control-label col-sm-2' %>
+    <% targets = {_self:'Aynı sayfada açılsın (Varsayılan)', _blank:'Farklı pencerede açılsın.'} %>
+    <div class="col-sm-10"><%= f.select :target, targets.collect{ |v, k| [k, v] }, {}, {class:'form-control'} %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Durum", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><label for="admin_menu_status" class="control-label"><%= f.check_box :status %> Menüde Gizle</label></div>
+  </div>
+
+  <div class="form-group">
+      <label for="" class="control-label col-sm-2"></label>
+      <div class="col-sm-10"><%= f.submit "Kaydet", class:'btn btn-primary' %></div>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<article id="single">
+    <head class="text-center">
+        <h1 class="single_post_title" title="<%= @post.title %>">• <%= @post.title %></h1><hr> 
+        <div class="row single_post_icons">
+            <div class="col-xs-12 col-sm-4 text-center"><em class="glyphicon glyphicon-calendar"></em> <%= @post.created_at.strftime("%d %m %Y %H:%M") %></div>
+            <div class="col-xs-12 col-sm-4 text-center"><em class="glyphicon glyphicon-folder-open"></em> <%= @post.category.title %></div>
+            <div class="col-xs-12 col-sm-4 text-center"><em class="glyphicon glyphicon-user"></em> <%= @post.user.username %></div>
+        </div>
+    </head>
+    
+    <hr>
+    <section class="single_post_content"><%= image_tag @post.image.url, class:'single_post_cover', alt:@post.title  if @post.image %> <%= @post.content.html_safe %></section>
+</article>

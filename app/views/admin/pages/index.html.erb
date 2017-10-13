@@ -1,0 +1,35 @@
+<h1>Sayfalar</h1>
+<div style="padding:10px 0px;">
+    <%= link_to 'Sayfa Oluştur', new_admin_page_path, class:"btn btn-primary colorwhite" %>
+</div>
+<table class="table table-hover table-bordered table-striped">
+  <thead>
+    <tr>
+      <th width="35"></th>
+      <th width="10"></th>
+      <th>Sayfa</th>
+      <th width="180">Üst Sayfa</th>
+      <th width="10"></th>
+      <th width="10"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= image_tag page.image.url , width:"45", height:"40" if page.image.url %></td>
+        <td><%= page.durum %></td>
+        <td><%= page.title %><br>
+            <small><strong>URL:</strong> <%= page_show_url(page.seo_title, page.id) %></small>
+        </td>
+        <td><%= page.ust_sayfa %></td>
+        <td><%= link_to 'Düzenle', edit_admin_page_path(page) %></td>
+        <td><%= link_to 'Sil', [:admin, page], method: :delete, data: { confirm: 'Bu sayfayı silmek istediğinizden emin misiniz?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

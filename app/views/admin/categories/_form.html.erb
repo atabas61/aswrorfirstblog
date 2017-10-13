@@ -1,0 +1,38 @@
+<%= form_for([:admin, category], html:{class:'form-horizontal'}) do |f| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Kategori Adı :", class:'control-label col-sm-2' %>
+    <div class="col-sm-10"><%= f.text_field :title, class:'form-control' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Açıklama", class:'control-label col-sm-2' %>
+      <div class="col-sm-10"><%= f.text_area :desc, class:'form-control' %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Üst Kategori", class:'control-label col-sm-2' %>
+      <div class="col-sm-10"><%= f.collection_select :parent, Category.all, :id, :title, {include_blank: "Üst kategori yok"}, {class:'form-control'} %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Durum", class:'control-label col-sm-2' %>
+      <div class="col-sm-10"><%= f.check_box :status %></div>
+  </div>
+
+  <div class="form-group">
+        <label for="" class="control-label col-sm-2"> </label>
+        <div class="col-sm-10"><%= f.submit "Kaydet", class:"btn btn-primary" %></div>
+  </div>
+<% end %>

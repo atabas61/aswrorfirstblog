@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_menu.title %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @admin_menu.desc %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @admin_menu.url %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @admin_menu.sort %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @admin_menu.status %>
+</p>
+
+<%= link_to 'Edit', edit_admin_menu_path(@admin_menu) %> |
+<%= link_to 'Back', admin_menus_path %>

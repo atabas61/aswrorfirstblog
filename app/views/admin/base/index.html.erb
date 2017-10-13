@@ -1,0 +1,85 @@
+<hr>
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading text-center"><strong>SAYFALAR</strong></div>
+<div class="panel-body">
+<ul class="list-group m0">
+    <li class="list-group-item"><span class="badge"><%= Page.all.size %></span> Tüm Sayfalar</li>
+    <li class="list-group-item"><span class="badge"><%= Page.where(status: true).size %></span> Aktif Sayfalar</li>
+    <li class="list-group-item"><span class="badge"><%= Page.where(status: false).size %></span> Pasif Sayfalar</li>
+    <li class="list-group-item"><%= link_to "Sayfa Listesi", admin_pages_path, class:"btn btn-default center-block " %></li>
+    <li class="list-group-item"><%= link_to "Yeni Sayfa Ekle", new_admin_page_path, class:"btn btn-default center-block    " %></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading text-center"><strong>YAZILAR</strong></div>
+<div class="panel-body">
+<ul class="list-group m0">
+    <li class="list-group-item"><span class="badge"><%= Post.all.size %></span> Tüm Yazılar</li>
+    <li class="list-group-item"><span class="badge"><%= Post.where(status: true).size %></span> Aktif Yazılar</li>
+    <li class="list-group-item"><span class="badge"><%= Post.where(status: false).size %></span> Pasif Yazılar</li>
+    <li class="list-group-item"><%= link_to "Yazı Listesi", admin_posts_path, class:"btn btn-default center-block " %></li>
+    <li class="list-group-item"><%= link_to "Yeni Yazı Ekle", new_admin_post_path, class:"btn btn-default center-block    " %></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading text-center"><strong>KATEGORİLER</strong></div>
+<div class="panel-body">
+<ul class="list-group m0">
+    <li class="list-group-item"><span class="badge"><%= Category.all.size %></span> Tüm Kategoriler</li>
+    <li class="list-group-item"><span class="badge"><%= Category.where(status: true).size %></span> Aktif Kategoriler</li>
+    <li class="list-group-item"><span class="badge"><%= Category.where(status: false).size %></span> Pasif Kategoriler</li>
+    <li class="list-group-item"><%= link_to "Kategori Listesi", admin_categories_path, class:"btn btn-default center-block " %></li>
+    <li class="list-group-item"><%= link_to "Yeni Kategori Ekle", admin_categories_path, class:"btn btn-default center-block    " %></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading text-center"><strong>YORUMLAR</strong></div>
+<div class="panel-body">
+<ul class="list-group m0">
+    <li class="list-group-item"><span class="badge"><%= Comment.all.size %></span> Tüm Yorumlar</li>
+    <li class="list-group-item"><span class="badge"><%= Comment.where(status: true).size %></span> Aktif Yorumlar</li>
+    <li class="list-group-item"><span class="badge"><%= Comment.where(status: false).size %></span> Pasif Yorumlar</li>
+    <li class="list-group-item"><%= link_to "Yorum Listesi", admin_comments_path, class:"btn btn-default center-block " %></li>
+    <li class="list-group-item"><%= link_to "Yeni Yorum Ekle", admin_comments_path, class:"btn btn-default center-block    " %></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-heading text-center"><strong>KULLANICILAR</strong></div>
+<div class="panel-body">
+<ul class="list-group m0">
+    <li class="list-group-item"><span class="badge"><%= User.all.size %></span> Tüm Kullanıcılar</li>
+    <li class="list-group-item"><span class="badge"><%= User.where(status: [1,2,3]).size %></span> Aktif Kullanıcılar</li>
+    <li class="list-group-item"><span class="badge"><%= User.where.not(status: [1,2,3]).size %></span> Pasif Kullanıcılar</li>
+    <li class="list-group-item"><%= link_to "Kullanıcı Listesi", admin_users_path, class:"btn btn-default center-block " %></li>
+    <li class="list-group-item"><%= link_to "Yeni Kullanıcı Ekle", new_admin_user_path, class:"btn btn-default center-block    " %></li>
+</ul>
+</div>
+</div>
+</div>

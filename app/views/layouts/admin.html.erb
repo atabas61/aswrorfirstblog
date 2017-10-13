@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Firstblog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+
+  <body>
+  <% flash[:alertclass] = 'success' if flash[:alertclass].blank? %>
+  <%= "<div class=\"alert alert-#{flash[:alertclass]} alert-dismissible\" role=\"alert\">
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+    <div class=\"container text-center\">#{notice}</div></div>".html_safe if notice %> 
+   
+   <div class="mainmenu">
+    <div class="container">
+    <ul class="nav nav-pills">
+        <li><%= link_to "Başlangıç", admin_root_path %></li>
+        <li><%= link_to "Yazılar", admin_posts_path %></li>
+        <li><%= link_to "Kategoriler", admin_categories_path %></li>
+        <li><%= link_to "Sayfalar", admin_pages_path %></li>
+        <li><%= link_to "Yorumlar", admin_comments_path %></li>
+        <li><%= link_to "Üyeler", admin_users_path %></li>
+        <li><%= link_to "Üst Menü", admin_menus_path %></li>
+        <li><%= link_to "Çıkış Yap", admin_logout_path %></li>
+    </ul>
+    </div>
+    </div>
+   
+    <div class="container">
+    <%= yield %>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/js/custom.js"></script> 
+    
+  </body>
+</html>
